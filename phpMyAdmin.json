@@ -4,10 +4,10 @@
         "version": "PTDL_v2",
         "update_url": null
     },
-    "exported_at": "2026-01-31T17:22:37Z",
+    "exported_at": "2026-01-31T19:58:28Z",
     "name": "phpMyAdmin",
     "author": "noname@eclipsesystems.top",
-    "description": "phpMyAdmin running on Debian 13 with PHP 8.4. Files stored in \/opt\/phpmyadmin and copied to \/home\/container at runtime.",
+    "description": "phpMyAdmin running on Debian 13 with PHP 8.4.",
     "features": null,
     "docker_images": {
         "thenoname\/phpmyadmin:latest": "thenoname\/phpmyadmin:latest"
@@ -16,12 +16,12 @@
     "startup": "php -S 0.0.0.0:{{SERVER_PORT}} -t \/home\/container\/phpmyadmin",
     "config": {
         "files": "{}",
-        "startup": "{\r\n    \"done\": \"Development Server (http:\/\/0.0.0.0:{{SERVER_PORT}}) started\"\r\n}",
+        "startup": "{\n\t\"done\": \"started\"\n}",
         "stop": "stop"
     },
     "scripts": {
         "installation": {
-            "script": "#!\/bin\/bash\r\n# phpMyAdmin requires no installation. Image already contains all files in \/opt\/phpmyadmin.\r\nmkdir -p \/mnt\/server\r\necho \"phpMyAdmin image ready.\"",
+            "script": "#!\/bin\/bash\n# phpMyAdmin requires no installation. Image already contains all files in \/opt\/phpmyadmin.\nmkdir -p \/mnt\/server\necho \"phpMyAdmin server is ready.\"",
             "container": "debian:trixie-slim",
             "entrypoint": "bash"
         }
