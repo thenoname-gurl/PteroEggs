@@ -1,0 +1,51 @@
+{
+    "_comment": "DO NOT EDIT: FILE GENERATED AUTOMATICALLY BY PTERODACTYL PANEL - PTERODACTYL.IO",
+    "meta": {
+        "version": "PTDL_v2",
+        "update_url": null
+    },
+    "exported_at": "2026-01-31T17:22:37Z",
+    "name": "phpMyAdmin",
+    "author": "noname@eclipsesystems.top",
+    "description": "phpMyAdmin running on Debian 13 with PHP 8.4. Files stored in \/opt\/phpmyadmin and copied to \/home\/container at runtime.",
+    "features": null,
+    "docker_images": {
+        "thenoname\/phpmyadmin:latest": "thenoname\/phpmyadmin:latest"
+    },
+    "file_denylist": [],
+    "startup": "php -S 0.0.0.0:{{SERVER_PORT}} -t \/home\/container\/phpmyadmin",
+    "config": {
+        "files": "{}",
+        "startup": "{\r\n    \"done\": \"Development Server (http:\/\/0.0.0.0:{{SERVER_PORT}}) started\"\r\n}",
+        "stop": "stop"
+    },
+    "scripts": {
+        "installation": {
+            "script": "#!\/bin\/bash\r\n# phpMyAdmin requires no installation. Image already contains all files in \/opt\/phpmyadmin.\r\nmkdir -p \/mnt\/server\r\necho \"phpMyAdmin image ready.\"",
+            "container": "debian:trixie-slim",
+            "entrypoint": "bash"
+        }
+    },
+    "variables": [
+        {
+            "name": "Database Host",
+            "description": "The MySQL\/MariaDB host phpMyAdmin should connect to.",
+            "env_variable": "PMA_HOST",
+            "default_value": "127.0.0.1",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|string|max:191",
+            "field_type": "text"
+        },
+        {
+            "name": "Database Port",
+            "description": "The MySQL\/MariaDB port phpMyAdmin should connect to.",
+            "env_variable": "PMA_PORT",
+            "default_value": "3306",
+            "user_viewable": true,
+            "user_editable": true,
+            "rules": "required|numeric",
+            "field_type": "text"
+        }
+    ]
+}
